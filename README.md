@@ -2,6 +2,7 @@
 Basically Play Pauses the song when it is safe to do so. when you die in a round
 
 Idea by https://github.com/glenndehaan/csgo-gamestate-spotify
+
 API used is https://github.com/Erlendeikeland/csgo-gsi-python
 
 
@@ -16,3 +17,7 @@ API used is https://github.com/Erlendeikeland/csgo-gsi-python
 
 5. when you first spawn and it detects that you are alive it will pause the media. 
    opposite when you are dead.
+
+# Demonstration 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MH6ViMebRTI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
