@@ -14,8 +14,11 @@ is_playing = True
 
 while True:
     me = server.get_info("player")
-    hp = me["state"]["health"]
-    name = me["name"]
+    try:
+        hp = me["state"]["health"]
+        name = me["name"]
+    except TypeError:
+        continue # Player is not in game yet
     if hp > 0:
         if is_playing:
             play_pause(keyboard)
