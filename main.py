@@ -11,15 +11,28 @@ server = GSIServer(("127.0.0.1", 3000), "S8RL9Z6Y22TYQK45JB4V8PHRJJMD9DS9")
 server.start_server()
 is_playing = True
 
+my_id = 0
+while not my_id:
+    try:
+        my_id = server.get_info("provider")["steamid"]
+        print(f"Got ID {my_id}")
+    except:
+        pass
 
+
+my_id = int(my_id)
 while True:
     me = server.get_info("player")
+    round_ = server.get_info("round")
     try:
         hp = me["state"]["health"]
         name = me["name"]
+        
     except TypeError:
-        continue # Player is not in game yet
-    if hp > 0:
+        continue
+    if int(me["steamid"]) != my_id:
+        hp = 0 # When i am spectating someone else. always consider that my HP is 0 
+    if hp > 0 and round_["phase"] == "live":
         if is_playing:
             play_pause(keyboard)
             is_playing = False
