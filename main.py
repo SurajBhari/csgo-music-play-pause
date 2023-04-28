@@ -3,10 +3,13 @@ from time import sleep
 from pynput.keyboard import Key, Controller
 
 keyboard = Controller()
+
+
 def play_pause(keyboard: Controller):
     keyboard.press(Key.media_play_pause)
     keyboard.release(Key.media_play_pause)
-    
+
+
 server = GSIServer(("127.0.0.1", 3000), "S8RL9Z6Y22TYQK45JB4V8PHRJJMD9DS9")
 server.start_server()
 is_playing = True
@@ -27,11 +30,11 @@ while True:
     try:
         hp = me["state"]["health"]
         name = me["name"]
-        
+
     except TypeError:
         continue
     if int(me["steamid"]) != my_id:
-        hp = 0 # When i am spectating someone else. always consider that my HP is 0 
+        hp = 0  # When i am spectating someone else. always consider that my HP is 0
     if hp > 0 and round_["phase"] == "live":
         if is_playing:
             play_pause(keyboard)
@@ -44,7 +47,7 @@ while True:
             play_pause(keyboard)
             is_playing = True
             print(f"Played music as {name} have {hp} HP")
-        else:   
+        else:
             pass
     sleep(0.5)
 
@@ -73,7 +76,7 @@ while True:
       "equip_value":200
    }
 }
-""" # When person is alive
+"""  # When person is alive
 
 """
 {
